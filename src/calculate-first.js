@@ -1,3 +1,14 @@
+function getResultElem(j, oddArr) {
+  for (var i = 0; i < oddArr.length; i++) {
+    if (j !== i && oddArr[j] === oddArr[i]) {
+      return false;
+    } else if (i === oddArr.length - 1) {
+      return true;
+    }
+  }
+}
+
+
 function single_element(arr) {
   var oddArr = [];
   var result = [];
@@ -7,18 +18,10 @@ function single_element(arr) {
     }
   }
 
-  for (var m = 0; m < oddArr.length - 1; m++) {
-    var flag = getResultElem(m, oddArr);
+  for (var j = 0; j < oddArr.length; j++) {
+    if (getResultElem(j, oddArr)) {
+      result.push(oddArr[j]);
+    }
   }
   return result;
-}
-
-function getResultElem(m, oddArr) {
-  var flag = [];
-  for (var i = m + 1; i < oddArr.length; i++) {
-    if (oddArr[m] === oddArr[i]) {
-      flag.push(i);
-    }
-    return flag;
-  }
 }
